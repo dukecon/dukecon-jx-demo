@@ -8,21 +8,29 @@
 
 [.lead]
 ====
-You have some Dev or Ops background and want to learn about one or all of the following?
+You have some Dev or Ops background and *want to learn about* one or all of the following?
 
-* https://jenkins-x.io[Jenkins-X] (JX) - next generation Kubernetes based CI/CD solution provided by the makers of the famous https://jenkins.io[Jenkins] server?
-* https://kubernetes.io[Kubernetes] (k8s) - the _Cloud Operating System_?
-* Development and deployment of a cloud native (distributed) application to k8s with the help of JX - by the example of https://dukecon.org[DukeCon], the conference planner for Javaland and other community based conferences?
+* https://kubernetes.io[Kubernetes] (k8s) — the _Cloud Operating System_?
+* https://jenkins-x.io[Jenkins-X] (JX) — next generation _k8s based CI/CD solution_ provided by the makers of the famous https://jenkins.io[Jenkins] server?
+* _Development and deployment of a cloud native (distributed) application to k8s_ with the help of JX — by the example of https://dukecon.org[DukeCon], the conference planner for Javaland and other community based conferences?
 
 We will (currently) introduce you to experience these goals by some hands-on tutorials and open space sessions, e.g.,
 at https://www.javaland.eu/de/programm/community-aktivitaeten/[Javaland 2020].
+
+*No further knowledge of the above mentioned technologies is necessary to participate in the hands-on tutorial!*
 ====
 
-The class does not require to be a Java developer but some Java background will help to understand the examples.
+[IMPORTANT]
+====
+Please prepare your participation in the hands-on tutorial by completing some setup steps as described in the <<prerequisites>>.
+====
+
+
+The class does not require to be a Java developer, but some Java background will help to understand the examples.
 
 [WARNING]
 This is currently not a complete online tutorial to introduce you to the mentioned technologies and goals.
-It only provides an introduction to enable you to participate in an hands-on session at one of the mentioned events.
+It only provides an introduction to enable you to participate in a hands-on session at one of the mentioned events.
 
 :toc:
 
@@ -49,8 +57,8 @@ You may use it as a first check if you are able to follow the class, iff you are
 ====
 
 To take part of the session you need to prepare the following tools and accounts.
-You need to run some small tools from either a local machine (Laptop) or a network (cloud) machine where you have shell access.
-Your local machine does not need to be extremely powerful, though we recommend to have at least 8 GB of RAM to run a local Java IDE (IntelliJ) if desired.
+You need to run some small tools from either a local machine (Laptop, or a network (cloud) machine where you have shell access.
+Your local machine does not need to be extremely powerful, though we recommend having at least 8 GB of RAM to run a local Java IDE (IntelliJ) if desired.
 The _real work_ is performed by some cloud provider, e.g., GCP or AWS.
 
 [TIP]
@@ -77,7 +85,15 @@ If you have a remote Linux machine (in the cloud) available you may also use it.
 [[cloud-account]]
 === Cloud Account
 
-K8s can be run on a great variety of public clouds as well as on-premises and you probably have a private cloud with k8s already at hand?
+[.lead]
+====
+You need to have an account with one of the public cloud providers to participate in the tutorial: Google (currently recommended), Microsoft, Amazon, or one of the many others who provide managed k8s.
+Almost all of them have a free plan, which allows to allocate the necessary resources (VMs, networks etc.).
+
+NOTE: _It is not required to have preliminary experience with these cloud environments — all the necessary knowledge is covered in the tutorial._
+====
+
+K8s can be run on a great variety of public clouds as well as on-premises, and you probably have a private cloud with k8s already at hand?
 You may even consider running k8s on your local machine by Vagrant/VirtualBox, Qemu, or Minikube.
 JX also claims to run with an increasing number of cloud providers.
 
@@ -98,7 +114,7 @@ On the Google Cloud Platform we will use a managed Kubernetes, called Google Kub
 ** You need a Google user account if you do not have one already (may be created in the course of the cloud account setup).
 * Install the `gcloud` SDK:
 ** You may try the link:bin/install-gcloud[] shell script (at least for Ubuntu/Debian),
-** *or* Follow the instructions in https://cloud.google.com/sdk/docs/quickstarts[]
+** *or* Follow the instructions in https://cloud.google.com/sdk/docs/quickstarts[].
 
 ==== AWS / EKS account
 
@@ -128,7 +144,12 @@ endif::aws[]
 [[local-tools]]
 === Local Tools
 
-[NOTE]
+[.lead]
+====
+Some local tools are necessary to participate in the tutorial. Please install the following packages.
+====
+
+[TIP]
 If we talk of local tools or _a local machine_, a remote machine with shell access is also covered.
 
 * Checkout (clone) this repository from https://github.com/dukecon/dukecon-jx-demo
@@ -137,13 +158,13 @@ Please install the following tools
 
 * a Shell (e.g., git `bash`, when running on Windows (<<windows>>))
 * `git` (should be pre-installed on most OS distributions)
-* `hub` (a nice CLI tool to work with GitHub from your local shell)
+* `hub` (is a nice CLI tool to work with GitHub from your local shell)
 * `screen` (optional, not only helpful if running on Vagrant and/or remote machine, but also to share environments for parallel terminal sessions)
 * `jx`
 ** Try to run the link:bin/install-jx[] shell script, *or*
 ** Follow the instructions in https://jenkins-x.io/docs/getting-started/setup/install/[]
 * Optionally install/move/link the following tools.
-By default `jx` will install them to ~/.jx/bin.
+By default, `jx` will install them to ~/.jx/bin.
 If you want to have them available in your binary search path, you may want to link or move them to, e.g., `/usr/local/bin`.
 ** General:
 *** `kubectl` (https://kubernetes.io/docs/tasks/tools/install-kubectl/[])
@@ -151,8 +172,8 @@ If you want to have them available in your binary search path, you may want to l
 //*** TBD
 ifdef::aws[]
 //** AWS
-//*** `kops`,
-//*** and `aws` (optional)
+//*** `kops`, and
+//*** `aws` (optional)
 endif::aws[]
 ** Optional
 *** `helm` (helpful for debugging problems)
@@ -160,7 +181,15 @@ endif::aws[]
 [[github-account]]
 === Github Account
 
-If you do not have a https://github.com[Github] account, create one (free).
+[.lead]
+====
+During the tutorial we will make heavy use of Github to store and share development and infrastructure projects.
+Therefore, you need to have a public Github account.
+
+NOTE: _Feel free to delete all the stuff from your Github account after you have finished the tutorial._
+====
+
+If you do not have a https://github.com[Github] account, create one (it's free!).
 
 == Getting started
 
