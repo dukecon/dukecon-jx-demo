@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eu
+
+case `uname -v` in
+  *Ubuntu* | *Debian* )
+    if test -x /usr/local/bin/eksctl; then
+      echo "Please update 'eksctl' manually if desired"
+    else
+      curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      sudo mv /tmp/eksctl /usr/local/bin
+    fi
+    eksctl version
+    ;;
+  *Darwin* )
+    if test -x /usr/local/bin/brew; then
+      if test -x /usr/local/bin/eksctl; then
+        : # TBD
+      else
+        brew tap weaveworks/tap
+        brew install weaveworks/tap/eksctl
+      fi
+    else
+      if test -x /usr/local/bin/eksctl; then
+        echo "Please update 'eksctl' manually if desired"
+      else
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        mv /tmp/eksctl /usr/local/bin
+      fi
+    fi
+    eksctl version
+    ;;
+  * )
+    echo "Please install/update 'eksctl' manually if desired"
+    ;;
+esac

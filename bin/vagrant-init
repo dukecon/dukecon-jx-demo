@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eu
+
+# Enable local environment settings for Vagrant machine, e.g., for HTTP proxy etc.
+test -r ~/.vagrantenv -a ! -r .vagrantenv && cp -p ~/.vagrantenv .
+test -r .vagrantenv && source .vagrantenv
+
+test -d cache/apt/archives/partial || mkdir -p cache/apt/archives/partial
+chmod 777 cache/apt/archives cache/apt/archives/partial
+
+exec vagrant up --provider virtualbox && vagrant halt && vagrant up

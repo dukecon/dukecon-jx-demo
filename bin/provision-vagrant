@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -eu
+
+sudo apt update
+sudo apt dist-upgrade -yy
+sudo apt install -yy git screen jq
+
+if test -x /usr/bin/snap; then
+  test -x /snap/bin/hub || sudo snap install hub --classic
+elif test -x /usr/bin/apt; then
+  # Not tested (Seems to be Debian?)!
+  test -x /usr/bin/hub || sudo apt install hub
+elif test -x /usr/local/bin/brew; then
+  test -x /usr/local/bin/hub || brew install hub
+else
+  echo "Please install 'hub' manually!"
+fi
+
+sudo apt autoremove -yy
+
