@@ -10,4 +10,4 @@ test -d cache/apt/archives/partial || mkdir -p cache/apt/archives/partial
 chmod 777 cache/apt/archives cache/apt/archives/partial
 test -d .aws || mkdir .aws
 
-exec vagrant up --provider virtualbox && vagrant halt && vagrant up
+vagrant up --provider virtualbox && vagrant halt && vagrant up
