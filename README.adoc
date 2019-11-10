@@ -259,7 +259,7 @@ TBD
 We have prepared a https://www.vagrantup.com/[Vagrant] Virtual Machine setup for your convenience if you do not have the opportunity to run on OSX/Linux or if you do not want to leave any of the tools on your local machine.
 Just go to the root of this repository (your local clone of it) and run
 
-* `./bin/vagrant-init` (may take some time if you have to download the vagrant box for the first time),
+* `./bin/vagrant-up` (may take some time if you have to download the vagrant box for the first time),
 * `vagrant ssh` to log into the new VM.
 
 Proceed from here with the additional setup (cf. <<prerequisites>>).

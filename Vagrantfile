@@ -3,10 +3,12 @@
 
 # Make sure to have the latest Vagrant installed, e.g., https://releases.hashicorp.com/vagrant/2.2.6/
 
+name = ENV['VAGRANT_NAME'] || "dukecon-jx-demo"
+
 Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vbox, override|
-    vbox.name = "dukecon-jx-demo"
+    vbox.name = name
     vbox.memory = 2048
     config.vm.box = "bento/ubuntu-18.04"
 
