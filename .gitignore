@@ -41,3 +41,4 @@ Temporary Items
 
 # Local Vagrant setup
 .vagrantenv
+*.deb
