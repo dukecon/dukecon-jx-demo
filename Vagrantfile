@@ -6,6 +6,7 @@
 name = ENV['VAGRANT_NAME'] || "dukecon-jx-demo"
 
 Vagrant.configure("2") do |config|
+  config.vm.hostname = name
 
   config.vm.provider "virtualbox" do |vbox, override|
     vbox.name = name
