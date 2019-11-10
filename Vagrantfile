@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = "bento/ubuntu-18.04"
 
     config.vm.synced_folder ".", "/vagrant"
+    config.vm.synced_folder ".aws", "/home/vagrant/.aws"
     # If you need to run multiple installs make sure the current updates will be cached
     config.vm.synced_folder "cache/apt/archives", "/var/cache/apt/archives"
   end
