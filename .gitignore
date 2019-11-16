@@ -46,3 +46,7 @@ Temporary Items
 # Logs, and Downloads, and work directory
 logs/
 downloads/
+wrk*/
+
+# AWS credentials
+.aws/
