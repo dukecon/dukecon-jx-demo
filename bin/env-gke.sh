@@ -7,6 +7,9 @@
 
 export JX_NAME JX_HOME JX_GKE_PROJECT KUBECONFIG
 
+: ${JX_GKE_ZONE:="us-east1-b"}
+
+export JX_GKE_ZONE
 
 #: ${JX_DOCKER_REGISTRY_ORG:="${JX_GKE_PROJECT}"}
 #: ${JX_BASE_DOMAIN="gke.dukecon.org"}

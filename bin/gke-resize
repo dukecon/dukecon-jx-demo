@@ -4,10 +4,10 @@ set -eu
 
 gcloud container clusters \
        update ${JX_NAME} \
-       --zone us-east1-b \
+       --zone "${JX_GKE_ZONE}" \
        --no-enable-autoscaling
 
 gcloud container clusters \
        resize ${JX_NAME} \
-       --zone us-east1-b \
+       --zone "${JX_GKE_ZONE}" \
        --num-nodes ${1} -q
