@@ -42,3 +42,7 @@ Temporary Items
 # Local Vagrant setup
 .vagrantenv
 *.deb
+
+# Logs, and Downloads, and work directory
+logs/
+downloads/
