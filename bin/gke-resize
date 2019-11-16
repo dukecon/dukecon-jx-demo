@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eu
+
+gcloud container clusters \
+       update ${JX_NAME} \
+       --zone us-east1-b \
+       --no-enable-autoscaling
+
+gcloud container clusters \
+       resize ${JX_NAME} \
+       --zone us-east1-b \
+       --num-nodes ${1} -q
