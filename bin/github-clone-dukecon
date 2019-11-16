@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+dir=`dirname $0`
+test "${dir}" && dir="$dir/"
+
+source $dir/env-common.sh
+
+: ${JX_GIT_USER:="${USER}"}
+
+for i in \
+    dukecon_server \
+    dukecon_feedback \
+    dukecon_pwa \
+    dukecon_admin \
+    dukecon_docker_images \
+; do
+    test -d $i || git clone git@github.com:${JX_GITHUB_ORG}/$i
+#    (cd $i && \
+#        hub fork --org ${JX_GIT_USER} && \
+#        git remote rm origin && \
+#        git remote rm ${JX_GIT_USER} && \
+#        git remote add origin git@github.com:${JX_GIT_USER}/$i && \
+#        hub browse -u \
+#        )
+done
