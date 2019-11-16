@@ -2,20 +2,40 @@
 
 set -eu
 
+dirname=`dirname $0`
+test "${dirname}" || dirname=.
+basedir="${dirname}/.."
+downloaddir="${basedir}/downloads"
+
+currentVersion () {
+  if test -x /usr/bin/jq; then
+    version="$(curl --silent "https://api.github.com/repos/jenkins-x/jx/releases/latest" | jq -r '.tag_name')"
+  else
+    version="$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')"
+  fi
+  echo "${version}"
+}
+
+downloadAndInstall () {
+  os=$1
+
+  (cd ${downloaddir}
+    version=`currentVersion`
+    filename="jx-${os}-${version}.tar.gz"
+    test -r ${filename} || curl -L -o ${filename} "https://github.com/jenkins-x/jx/releases/download/${version}/jx-${os}.tar.gz"
+    tar xf ${filename} jx
+    sudo mv jx /usr/local/bin/jx
+  )
+}
+
+
 case `uname -v` in
   *Ubuntu* | *Debian* )
     if test -x /usr/local/bin/jx; then
       echo "JX is already installed - trying upgrade"
-      jx upgrade cli
+      sudo jx upgrade cli
     else
-      (cd /tmp
-      if test -x /usr/bin/jq; then
-        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-linux-amd64.tar.gz" | tar xzv "jx"
-      else
-        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv "jx"
-      fi
-      sudo mv jx /usr/local/bin/jx
-      )
+      downloadAndInstall "linux-amd64"
     fi
     ;;
   Darwin* )
@@ -29,15 +49,9 @@ case `uname -v` in
       fi
     else
       if test -x /usr/local/bin/jx; then
-        (cd /tmp
-        if test -x /usr/bin/jq; then
-          curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-darwin-amd64.tar.gz" | tar xzv "jx"
-        else
-          curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-darwin-amd64.tar.gz" | tar xzv "jx"
-        fi
-        sudo mv jx /usr/local/bin/jx
-        )
+        downloadAndInstall "darwin-amd64"
       else
+        echo "JX is already installed - trying upgrade"
         jx upgrade cli
       fi
     fi
