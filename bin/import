@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+# Do not create drafts if they are already there
+draft=""
+test -d charts && draft="--no-draft=true"
+
+exec jx import \
+     --disable-updatebot=true \
+     --jenkinsfile Jenkinsxfile \
+     --branches 'develop|master|feature/.*|bugfix/.*' \
+     ${draft} \
+     "${@}" \
+     .

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -eu
+
+exec /bin/rm -rf \
+    .dockerignore \
+    .helmignore \
+    Dockerfile \
+    Jenkinsxfile \
+    OWNERS \
+    OWNERS_ALIASES \
+    charts \
+    skaffold.yaml \
+    watch.sh
