@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -eu
+
+dir=`dirname $0`
+test "${dir}" && dir="$dir/"
+
+source $dir/env-common.sh
+source $dir/env-eks.sh
+
+${JX} create cluster eks \
+    -n ${JX_NAME} \
+    --zones us-west-2b,us-west-2c \
+    --node-type=m4.large \
+    --nodes-min=3 \
+    --nodes-max=5
+    --skip-login=true \
+    \
+    "$@"
+
+# TODO test '-r us-west-2' instead of '--zones'

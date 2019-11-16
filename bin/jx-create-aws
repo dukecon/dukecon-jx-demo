@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eu
+
+dir=`dirname $0`
+test "${dir}" && dir="$dir/"
+
+source $dir/env-common.sh
+source $dir/env-aws.sh
+
+${JX} create cluster aws \
+    -n ${JX_NAME} \
+    --region us-west-2 \
+    --zones us-west-2b,us-west-2c \
+    --node-size m5.large \
+    --nodes 3 \
+    \
+    --static-jenkins true \
+    --git-api-token=${JX_GIT_APITOKEN} \
+    --git-username=ascheman \
+    --external-dns false \
+    \
+    "$@"
