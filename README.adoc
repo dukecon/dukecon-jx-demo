@@ -14,22 +14,22 @@ You have some Dev or Ops background and *want to learn about* one or all of the 
 * https://jenkins-x.io[Jenkins-X] (JX) — next generation _k8s based CI/CD solution_ provided by the makers of the famous https://jenkins.io[Jenkins] server?
 * _Development and deployment of a cloud native (distributed) application to k8s_ with the help of JX — by the example of https://dukecon.org[DukeCon], the conference planner for Javaland and other community based conferences?
 
-We will (currently) introduce you to experience these goals by some hands-on tutorials and open space sessions, e.g.,
+We will (currently) introduce you to experience these goals by some hands-on workshops and open space sessions, e.g.,
 at https://www.javaland.eu/de/programm/community-aktivitaeten/[Javaland 2020].
 
-*No further knowledge of the above mentioned technologies is necessary to participate in the hands-on tutorial!*
+*No further knowledge of the above mentioned technologies is necessary to participate in the hands-on workshop!*
 ====
 
 [IMPORTANT]
 ====
-Please prepare your participation in the hands-on tutorial by completing some setup steps as described in the <<prerequisites>>.
+Please prepare your participation in the hands-on workshop by completing some setup steps as described in the <<prerequisites>>.
 ====
 
 
 The class does not require to be a Java developer, but some Java background will help to understand the examples.
 
 [WARNING]
-This is currently not a complete online tutorial to introduce you to the mentioned technologies and goals.
+This is currently not a complete online _tutorial_ to introduce you to the mentioned technologies and goals.
 It only provides an introduction to enable you to participate in a hands-on session at one of the mentioned events.
 
 :toc:
@@ -87,10 +87,10 @@ If you have a remote Linux machine (in the cloud) available you may also use it.
 
 [.lead]
 ====
-You need to have an account with one of the public cloud providers to participate in the tutorial: Google (currently recommended), Microsoft, Amazon, or one of the many others who provide managed k8s.
+You need to have an account with one of the public cloud providers to participate in the workshop: Google (currently recommended), Microsoft, Amazon, or one of the many others who provide managed k8s.
 Almost all of them have a free plan, which allows to allocate the necessary resources (VMs, networks etc.).
 
-NOTE: _It is not required to have preliminary experience with these cloud environments — all the necessary knowledge is covered in the tutorial._
+NOTE: _It is not required to have preliminary experience with these cloud environments — all the necessary knowledge is covered in the workshop._
 ====
 
 K8s can be run on a great variety of public clouds as well as on-premises, and you probably have a private cloud with k8s already at hand?
@@ -146,7 +146,7 @@ endif::aws[]
 
 [.lead]
 ====
-Some local tools are necessary to participate in the tutorial. Please install the following packages.
+Some local tools are necessary to participate in the workshop. Please install the following packages.
 ====
 
 [TIP]
@@ -183,10 +183,10 @@ endif::aws[]
 
 [.lead]
 ====
-During the tutorial we will make heavy use of Github to store and share development and infrastructure projects.
+During the workshop we will make heavy use of Github to store and share development and infrastructure projects.
 Therefore, you need to have a public Github account.
 
-NOTE: _Feel free to delete all the stuff from your Github account after you have finished the tutorial._
+NOTE: _Feel free to delete all the stuff from your Github account after you have finished the workshop._
 ====
 
 If you do not have a https://github.com[Github] account, create one (it's free!).
@@ -195,7 +195,7 @@ If you do not have a https://github.com[Github] account, create one (it's free!)
 
 [CAUTION]
 ====
-If you can't wait for the tutorial day to start, you may proceed on your own risk from here.
+If you can't wait for the workshop day to start, you may proceed on your own risk from here.
 Be aware that setting up infrastructure/resources in your cloud account may cause fees being charged to you depending on the kind of resources (machines, IPs, load balancers etc.) and if you have a free plan.
 
 .Remove resources when you're done!
