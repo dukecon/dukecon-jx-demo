@@ -1,5 +1,8 @@
 #
 
+: ${USER:=$(id -nu)}
+export USER
+
 : ${JX:="jx"}
 export JX
 
