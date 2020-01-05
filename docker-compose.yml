@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  jx:
+    image: dukecon/dukecon-jx${DUKECON_JX_VERSION}
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    hostname: dukecon-jx
+    container_name: dukecon-jx-demo
+    command: bash
+    stdin_open: true
+    tty: true
+    working_dir: /root
+    volumes:
+      - .config:/root/.config
+      - .jx:/root/.jx
+      # Enable environment of setup scripts
+      - .:/setup

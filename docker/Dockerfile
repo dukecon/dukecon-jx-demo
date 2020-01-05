@@ -1,0 +1,15 @@
+# If you ever switch to a new (stable!) Ubuntu version make sure everything works with the new version!
+FROM ubuntu:18.04
+MAINTAINER Gerd Aschemann <gerd@aschemann.net>
+
+ADD bin /setup/bin
+WORKDIR /root
+
+ENV SHELL=/bin/bash
+
+RUN /setup/bin/install-base
+RUN /setup/bin/install-hub
+RUN /setup/bin/install-jx
+RUN /setup/bin/install-gcloud
+
+

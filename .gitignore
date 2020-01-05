@@ -53,3 +53,7 @@ wrk*/
 
 # README: html from adoc
 README.html
+
+# Lokal directories for JX and GCloud development
+.config
+.jx
