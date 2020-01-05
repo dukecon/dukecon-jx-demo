@@ -7,6 +7,9 @@ test "${dirname}" || dirname=.
 basedir="${dirname}/.."
 downloaddir="${basedir}/downloads"
 
+sudo=""
+test -x /bin/sudo && sudo=/bin/sudo
+
 currentVersion () {
   if test -x /usr/bin/jq; then
     version="$(curl --silent "https://api.github.com/repos/jenkins-x/jx/releases/latest" | jq -r '.tag_name')"
@@ -19,21 +22,23 @@ currentVersion () {
 downloadAndInstall () {
   os=$1
 
+  mkdir -p ${downloaddir}
+
   (cd ${downloaddir}
     version=`currentVersion`
     filename="jx-${os}-${version}.tar.gz"
     test -r ${filename} || curl -L -o ${filename} "https://github.com/jenkins-x/jx/releases/download/${version}/jx-${os}.tar.gz"
     tar xf ${filename} jx
-    sudo mv jx /usr/local/bin/jx
+    ${sudo} mv jx /usr/local/bin/jx
   )
 }
 
 
-case `uname -v` in
-  *Ubuntu* | *Debian* )
+case `uname -a` in
+  *Ubuntu* | *Debian* | *Linux* )
     if test -x /usr/local/bin/jx; then
       echo "JX is already installed - trying upgrade"
-      sudo jx upgrade cli
+      ${sudo} jx upgrade cli
     else
       downloadAndInstall "linux-amd64"
     fi
@@ -56,6 +61,9 @@ case `uname -v` in
       fi
     fi
     ;;
+  * )
+    echo "Please install JX manually, I cannot determine your OS!" >&2
+    exit 1
 esac
 
 exec jx --version
