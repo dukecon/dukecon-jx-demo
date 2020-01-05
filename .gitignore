@@ -50,3 +50,6 @@ wrk*/
 
 # AWS credentials
 .aws/
+
+# README: html from adoc
+README.html
