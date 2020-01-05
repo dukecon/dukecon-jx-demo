@@ -17,7 +17,8 @@ pipeline {
             steps {
                 sh "export DUKECON_JX_VERSION=':build' && docker-compose build"
                 sh "export DUKECON_JX_VERSION=':build' && export NEW_VERSION=\$(docker-compose run jx jx --version) && " +
-                        "docker tag dukecon/dukecon-jx\${DUKECON_JX_VERSION} dukecon/dukecon-jx:\${NEW_VERSION}"
+                        "docker tag dukecon/dukecon-jx\${DUKECON_JX_VERSION} dukecon/dukecon-jx:\${NEW_VERSION} && " +
+                        "docker push dukecon/dukecon-jx:\${NEW_VERSION}"
             }
         }
     }
