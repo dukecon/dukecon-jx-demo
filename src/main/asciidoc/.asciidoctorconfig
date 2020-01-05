@@ -1,0 +1,14 @@
+// General settings
+:doctype: book
+:numbered:
+:source-highlighter: coderay
+:icons: font
+:lang: en
+// TOC settings
+:toc: left
+:toc-placement: manual
+// ensure that sub sub sectionshave numbers
+:sectnumlevels: 5
+// add URL anchors (paragraph sign) in front of the headings in HTML
+:sectanchors:
+
