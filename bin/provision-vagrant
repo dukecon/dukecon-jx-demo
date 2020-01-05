@@ -2,20 +2,8 @@
 
 set -eu
 
-sudo apt-get update
-sudo apt-get dist-upgrade -yy
-sudo apt-get install -yy git screen jq
-
-if test -x /usr/bin/snap; then
-  test -x /snap/bin/hub || sudo snap install hub --classic
-elif test -x /usr/bin/apt; then
-  # Not tested (Seems to be Debian?)!
-  test -x /usr/bin/hub || sudo apt-get install hub
-elif test -x /usr/local/bin/brew; then
-  test -x /usr/local/bin/hub || brew install hub
-else
-  echo "Please install 'hub' manually!"
-fi
+/vagrant/bin/install-base
+/vagrant/bin/install-hub
 
 sudo apt autoremove -yy
 

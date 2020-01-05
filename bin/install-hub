@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -eu
+
+sudo=""
+test -x /bin/sudo && sudo=/bin/sudo
+
+install_linux_from_github () {
+  # Wait for a better solution to install Hub: https://github.com/github/hub/issues/2434
+  version=2.13.0
+
+  cd /tmp
+  wget https://github.com/github/hub/releases/download/v${version}/hub-linux-amd64-${version}.tgz
+  tar xf hub-linux-amd64-${version}.tgz
+  cd hub-linux-amd64-${version}
+  ./install
+  cd ..
+  /bin/rm -rf hub-linux-amd64-${version} hub-linux-amd64-${version}.tgz
+}
+
+install_manually () {
+  echo "Please install 'hub' manually!" >&2
+}
+
+
+case `uname -a` in
+  *Ubuntu* )
+    test -x /usr/bin/hub && exit 0
+    if test -x /usr/bin/snap; then
+      ${sudo} snap install hub --classic
+    else
+      install_linux_from_github
+    fi
+    ;;
+  *Debian* )
+    test -x /usr/bin/hub && exit 0
+    ${sudo} apt-get install -yy hub || install_linux_from_github
+    ;;
+  *Linux* )
+    install_linux_from_github
+    ;;
+  *Darwin* )
+    test -x /usr/local/bin/hub && exit 0
+    if test -x /usr/local/bin/brew; then
+      brew install hub
+    else
+      install_manually
+    fi
+    ;;
+  * )
+    install_manually
+esac
