@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -eu
+
+# Ensure that version 2.x is installed!
+version=2.16.1
+
+sudo=""
+test -x /bin/sudo && sudo=/bin/sudo
+
+install_linux_from_github () {
+  cd /tmp
+  wget https://get.helm.sh/helm-v${version}-linux-amd64.tar.gz
+  tar xf helm-v${version}-linux-amd64.tar.gz
+  cd linux-amd64 && mv helm tiller /usr/bin
+
+  cd ..
+  /bin/rm -rf linux-amd64 helm-v${version}-linux-amd64.tar.gz
+}
+
+install_manually () {
+  echo "Please install 'hub' manually!" >&2
+}
+
+
+case `uname -a` in
+  *Linux* )
+    install_linux_from_github
+    ;;
+  * )
+    install_manually
+esac
