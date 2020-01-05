@@ -42,9 +42,9 @@ It only provides an introduction to enable you to participate in a hands-on sess
 ****
 If you are experienced to run a local machine with OSX or Linux (even as a VM) and install and use developer and operator tools, you may directly jump to the respective <<setup,installation and preparation>> parts for
 
-* <<cloud-account>>,
-* <<local-tools>>, and
-* <<github-account>>.
+* <<github-account>>,
+* <<cloud-account>>, and
+* <<local-tools>>.
 ****
 
 [CAUTION]
@@ -83,6 +83,19 @@ If you have a remote Linux machine (in the cloud) available you may also use it.
 ====
 
 [[setup]]
+[[github-account]]
+=== Github Account
+
+[.lead]
+====
+During the workshop we will make heavy use of Github to store and share development and infrastructure projects.
+Therefore, you need to have a public Github account.
+
+NOTE: _Feel free to delete all the stuff from your Github account after you have finished the workshop._
+====
+
+If you do not have a https://github.com[Github] account, create one (it's free!).
+
 [[cloud-account]]
 === Cloud Account
 
@@ -178,19 +191,6 @@ ifdef::aws[]
 endif::aws[]
 ** Optional
 *** `helm` (helpful for debugging problems)
-
-[[github-account]]
-=== Github Account
-
-[.lead]
-====
-During the workshop we will make heavy use of Github to store and share development and infrastructure projects.
-Therefore, you need to have a public Github account.
-
-NOTE: _Feel free to delete all the stuff from your Github account after you have finished the workshop._
-====
-
-If you do not have a https://github.com[Github] account, create one (it's free!).
 
 == Getting started
 
