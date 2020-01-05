@@ -196,8 +196,11 @@ endif::aws[]
 
 [CAUTION]
 ====
-If you can't wait for the workshop day to start, you may proceed on your own risk from here.
-Be aware that setting up infrastructure/resources in your cloud account may cause fees being charged to you depending on the kind of resources (machines, IPs, load balancers etc.) and if you have a free plan.
+If you can't wait for the workshop day to start, you may proceed *on your own risk* from here.
+
+Make sure you have at least completed the setup according to the <<prerequisites>> so far!
+
+Be aware that setting up infrastructure/resources in your cloud account *may cause fees being charged* to you depending on the kind of resources (machines, IPs, load balancers etc.) and if you have a free plan.
 
 .Remove resources when you're done!
 ****
