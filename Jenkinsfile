@@ -21,6 +21,25 @@ pipeline {
                         "docker push dukecon/dukecon-jx:\${NEW_VERSION}"
             }
         }
+        stage('Build documentation') {
+            steps {
+                withMaven {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+        stage('Publish documenation') {
+            steps {
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'target/generated-docs/',
+                        reportFiles: 'index.html',
+                        reportName: 'Documentation'
+                ]
+            }
+        }
     }
     post {
         always {

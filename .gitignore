@@ -57,3 +57,6 @@ README.html
 # Lokal directories for JX and GCloud development
 .config
 .jx
+
+# Maven artifacts
+target/
