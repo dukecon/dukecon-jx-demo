@@ -8,7 +8,12 @@ pipeline {
         }
     }
 
+    options {
+        disableConcurrentBuilds()
+    }
+
     triggers {
+        cron('13 1 * * *')
         pollSCM('* * * * *')
     }
 
