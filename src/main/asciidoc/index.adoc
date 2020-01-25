@@ -34,8 +34,6 @@ The class does not require to be a Java developer, but some Java background will
 This is currently not a complete online _tutorial_ to introduce you to the mentioned technologies and goals.
 It only provides an introduction to enable you to participate in a hands-on session at one of the mentioned events.
 
-:toc:
-
 [[prerequisites]]
 == Prerequisites
 
