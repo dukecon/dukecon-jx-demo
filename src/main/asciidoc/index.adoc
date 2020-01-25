@@ -41,7 +41,7 @@ It only provides an introduction to enable you to participate in a hands-on sess
 
 .TL;DR
 ****
-If you are experienced to run a local machine with OSX or Linux (even as a VM) and install and use developer and operator tools, you may directly jump to the respective <<setup,installation and preparation>> parts for
+If you are experienced to run a local machine with OSX or Linux (even as a VM) and install and use developer and operator tools, you may directly jump to the respective installation and preparation parts for
 
 * <<github-account>>,
 * <<cloud-account>>, and
