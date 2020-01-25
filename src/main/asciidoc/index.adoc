@@ -290,18 +290,6 @@ endif::aws[]
 TBD
 
 [appendix]
-[[vagrant]]
-== Vagrant Setup
-
-We have prepared a https://www.vagrantup.com/[Vagrant] Virtual Machine setup for your convenience if you do not have the opportunity to run on OSX/Linux or if you do not want to leave any of the tools on your local machine.
-Just go to the root of this repository (your local clone of it) and run
-
-* `./bin/vagrant-up` (may take some time if you have to download the vagrant box for the first time),
-* `vagrant ssh` to log into the new VM.
-
-Proceed from here with the additional setup (cf. <<prerequisites>>).
-
-[appendix]
 == Links
 
 * https://jenkins-x.io/docs/getting-started/setup/[Setup Jenkins-X]
@@ -348,3 +336,15 @@ ifdef::aws[]
 //*** `kops`, and
 //*** `aws` (optional)
 endif::aws[]
+
+[appendix]
+[[vagrant]]
+== Vagrant Setup
+
+We have prepared a https://www.vagrantup.com/[Vagrant] Virtual Machine setup for your convenience if you do not have the opportunity to run on OSX/Linux/Docker or if you do not want to leave any of the tools on your local machine.
+Just go to the root of this repository (your local clone of it) and run
+
+* `./bin/vagrant-up` (may take some time if you have to download the vagrant box for the first time),
+* `vagrant ssh` to log into the new VM.
+
+Proceed from here with the additional setup (cf. <<prerequisites>>).
