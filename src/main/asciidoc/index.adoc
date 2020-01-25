@@ -16,8 +16,8 @@ You have some Dev or Ops background (or even both) and *want to learn about* one
 * https://jenkins-x.io[Jenkins-X] (JX) — next generation _k8s based CI/CD solution_ provided by the makers of the famous https://jenkins.io[Jenkins] server?
 * _Development and deployment of a cloud native (distributed) application to k8s_ with the help of JX — by the example of https://dukecon.org[DukeCon], the conference planner for Javaland and other community based conferences?
 
-We will (currently) introduce you to experience these goals by some hands-on workshops and open space sessions, e.g.,
-at https://www.javaland.eu/de/programm/community-aktivitaeten/[Javaland 2020].
+We will (currently) introduce you to experience these goals by some hands-on workshops and open space sessions, e.g., as
+Community Activity at https://www.javaland.eu/de/programm/community-aktivitaeten/[Javaland 2020]: https://programm.javaland.eu/2020/#/scheduledEvent/591508[DukeCon on JX].
 
 *No further knowledge of the above mentioned technologies is necessary to participate in the hands-on workshop!*
 ====
