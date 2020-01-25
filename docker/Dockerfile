@@ -7,10 +7,11 @@ WORKDIR /root
 
 ENV SHELL=/bin/bash
 
+# tag::install-tools[]
 RUN /setup/bin/install-base
 RUN /setup/bin/install-hub
 RUN /setup/bin/install-helm
 RUN /setup/bin/install-jx
 RUN /setup/bin/install-gcloud
-
+# end::install-tools[]
 
