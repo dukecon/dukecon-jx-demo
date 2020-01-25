@@ -1,11 +1,12 @@
 = DukeCon Kubernetes / Jenkins-X Demo
 include::.asciidoctorconfig[]
+
 :author: Gerd Aschemann
 :email: gerd@aschemann.net
 :twitter: @GerdAschemann
 
-:aws:false
-:jx_version:unknown
+:aws!:
+:jx_version: unknown
 
 [.lead]
 ====
