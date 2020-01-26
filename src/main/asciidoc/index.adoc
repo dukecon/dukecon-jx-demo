@@ -22,6 +22,15 @@ Community Activity at https://www.javaland.eu/de/programm/community-aktivitaeten
 *No further knowledge of the above mentioned technologies is necessary to participate in the hands-on workshop!*
 ====
 
+
+|===
+|Author |JX Version
+
+|{author}
+|{jx_version}
+
+|===
+
 [IMPORTANT]
 ====
 Please prepare your participation in the hands-on workshop carefully by completing some setup steps as described in the <<prerequisites>>.

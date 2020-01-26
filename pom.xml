@@ -16,6 +16,7 @@
         <nexus.repository.host>dev.dukecon.org</nexus.repository.host>
         <nexus.repository.port/>
         <nexus.repository.base>/nexus</nexus.repository.base>
+        <jx.version>local</jx.version>
     </properties>
 
     <repositories>
@@ -82,6 +83,9 @@
                             <sourceDirectory>${basedir}/src/main/asciidoc/</sourceDirectory>
                             <outputDirectory>${project.build.directory}/generated-docs/</outputDirectory>
                             <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <attributes>
+                                <jx_version>${jx.version}</jx_version>
+                            </attributes>
                         </configuration>
                     </execution>
                 </executions>

@@ -40,7 +40,9 @@ pipeline {
         stage('Build documentation') {
             steps {
                 withMaven {
-                    sh 'mvn clean package'
+                    script {
+                        sh 'mvn clean package -Djx.version=${currentBuild.displayName}'
+                    }
                 }
             }
         }
