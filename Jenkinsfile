@@ -27,7 +27,7 @@ pipeline {
                 sh "export DUKECON_JX_VERSION=':build' && docker-compose build --no-cache"
                 script {
                     NEW_VERSION=sh (returnStdout: true,
-                            script: "DUKECON_JX_VERSION=':build' docker-compose run --rm jx jx --version")
+                            script: "DUKECON_JX_VERSION=':build' docker-compose run --rm jx jx --version").trim()
                     currentBuild.displayName = "${NEW_VERSION}"
                 }
                 sh "export NEW_VERSION=${NEW_VERSION} && " +
