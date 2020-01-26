@@ -10,6 +10,10 @@ pipeline {
 
     options {
         disableConcurrentBuilds()
+        buildDiscarder(
+                logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5',
+                        daysToKeepStr: '10', numToKeepStr: '20')
+        )
     }
 
     triggers {
