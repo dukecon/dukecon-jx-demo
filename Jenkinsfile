@@ -25,8 +25,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh "export DUKECON_JX_VERSION=':build' && docker-compose build --no-cache"
-                sh "export DUKECON_JX_VERSION=':build' && " +
-                        "export NEW_VERSION=\$(docker-compose run --rm jx jx --version) && " +
+                script {
+                    NEW_VERSION=sh (returnStdout: true,
+                            script: "DUKECON_JX_VERSION=':build' docker-compose run --rm jx jx --version")
+                    currentBuild.displayName = "${NEW_VERSION}"
+                }
+                sh "export NEW_VERSION=${NEW_VERSION} && " +
                         "docker tag dukecon/dukecon-jx\${DUKECON_JX_VERSION} dukecon/dukecon-jx:\${NEW_VERSION} && " +
                         "docker push dukecon/dukecon-jx:\${NEW_VERSION} && " +
                         "docker tag dukecon/dukecon-jx\${DUKECON_JX_VERSION} dukecon/dukecon-jx:latest && " +
