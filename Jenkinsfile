@@ -41,7 +41,8 @@ pipeline {
             steps {
                 withMaven {
                     script {
-                        sh 'mvn clean package -Djx.version=${currentBuild.displayName}'
+                        NEW_VERSION=currentBuild.displayName
+                        sh 'mvn clean package -Djx.version=${NEW_VERSION}'
                     }
                 }
             }
