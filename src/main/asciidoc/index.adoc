@@ -242,9 +242,10 @@ Log in to your cloud account and perform further setup
 
 GKE::
 * `gcloud auth login` # This will either open a browser session or show (a long) URL (please open with browser then) and follow instructions
-* Create a new project: https://console.cloud.google.com/projectcreate[], e.g., `jx-demo`
-* Smoketest: Check if the project is created with `gcloud projects list`
-* Set the new project as default: `gcloud config set project <project>`
+* Create a new project, e.g., `jx-demo`: `gcloud projects create jx-demo`
+* Check if the project is created with `gcloud projects list`
+* Set the new project as default: `gcloud config set project jx-demo`
+* Add a billing account to the new project: https://console.cloud.google.com/billing/[]
 ifdef::aws[]
 AWS::
 TBD
@@ -256,6 +257,12 @@ Run the following command to get your first cluster going (you may follow almost
 
 GKE::
 * `jx create cluster gke --skip-login` (make sure the login went well in <<prepare-cloud,the prepare step>>)
+* A setup wizard will start, use appropriate values, i.e.,
+** The project chosen in the <<prepare-cloud>> step,
+** In general confirm the defaults proposed by `jx`, _except for the following_,
+** Choose a region (hint: The U.S. regions are the cheapest regions, e.g., `us-east1-b`),
+** Use `Static Jenkins Server and Jenkinsfiles` installation type (this is not the default but we will make use of some features during the workshop)
+** Choose your name/email address from <<github-account>> for the git user.
 ifdef::aws[]
 AWS::
 TBD
