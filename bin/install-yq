@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -eu
+
+sudo=""
+test -x /bin/sudo && sudo=/bin/sudo
+
+install_manually () {
+  echo "Please install 'yq' manually!" >&2
+}
+
+install_debian () {
+  ${sudo} apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+  ${sudo} add-apt-repository -y ppa:rmescandon/yq
+  ${sudo} apt-get update
+  ${sudo} apt-get -yy install yq
+}
+
+
+case `uname -a` in
+  *Ubuntu* | *Debian* )
+    install_debian
+    ;;
+  *Linux* )
+    if test -r /etc/apt; then
+      install_debian
+    else
+      install_manually
+    fi
+    ;;
+  *Darwin* )
+    test -x /usr/local/bin/yq && exit 0
+    if test -x /usr/local/bin/brew; then
+      brew install yq
+    else
+      install_manually
+    fi
+    ;;
+  * )
+    install_manually
+esac
