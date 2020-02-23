@@ -51,8 +51,9 @@ wrk*/
 # AWS credentials
 .aws/
 
-# README: html from adoc
+# Misc. htmls generated from adoc by IntelliJ plugin
 README.html
+src/main/asciidoc/index.html
 
 # Lokal directories for JX and GCloud development
 .config
