@@ -83,8 +83,10 @@
                             <sourceDirectory>${basedir}/src/main/asciidoc/</sourceDirectory>
                             <outputDirectory>${project.build.directory}/generated-docs/</outputDirectory>
                             <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <imagesDir>.</imagesDir>
                             <attributes>
                                 <jx_version>${jx.version}</jx_version>
+                                <bin>https://github.com/dukecon/dukecon-jx-demo/tree/develop/bin</bin>
                             </attributes>
                         </configuration>
                     </execution>
@@ -120,7 +122,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -139,7 +141,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
