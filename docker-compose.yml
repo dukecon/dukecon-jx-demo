@@ -13,7 +13,8 @@ services:
     tty: true
     working_dir: /root
     volumes:
-      - .config:/root/.config
-      - .jx:/root/.jx
+      - ./data/config:/root/.config
+      - ./data/kube:/root/.kube
+      - ./data/jx:/root/.jx
       # Enable environment of setup scripts
       - .:/setup
