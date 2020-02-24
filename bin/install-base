@@ -8,4 +8,4 @@ test -x /bin/sudo && sudo=/bin/sudo
 ${sudo} apt-get update
 ${sudo} apt-get dist-upgrade -yy
 ${sudo} apt-get install -yy apt-utils
-${sudo} apt-get install -yy git screen jq apt-transport-https ca-certificates wget curl gpg software-properties-common
+${sudo} apt-get install -yy git screen jq apt-transport-https ca-certificates wget curl gpg software-properties-common openjdk-11-jdk-headless
