@@ -26,9 +26,9 @@ pipeline {
             steps {
                 sh "export DUKECON_JX_VERSION=':build' && docker-compose build --no-cache"
                 script {
-                    NEW_VERSION=sh (returnStdout: true,
+                    env.NEW_VERSION=sh (returnStdout: true,
                             script: "DUKECON_JX_VERSION=':build' docker-compose run --rm jx jx --version").trim()
-                    currentBuild.displayName = "${NEW_VERSION}"
+                    currentBuild.displayName = "${env.NEW_VERSION}"
                 }
                 sh "export DUKECON_JX_VERSION=':build' && export NEW_VERSION=${NEW_VERSION} && " +
                         "docker tag dukecon/dukecon-jx\${DUKECON_JX_VERSION} dukecon/dukecon-jx:\${NEW_VERSION} && " +
@@ -41,7 +41,6 @@ pipeline {
             steps {
                 withMaven {
                     script {
-                        NEW_VERSION=currentBuild.displayName
                         sh 'mvn clean package -Djx.version=${NEW_VERSION}'
                     }
                 }
