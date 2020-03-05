@@ -1,0 +1,57 @@
+#!/bin/bash
+
+set -eu
+
+dirname=`dirname $0`
+test "${dirname}" || dirname=.
+basedir="${dirname}/.."
+downloaddir="${basedir}/downloads"
+
+sudo=""
+test -x /bin/sudo && sudo=/bin/sudo
+
+currentVersion () {
+  if test -x /usr/bin/jq; then
+    version="$(curl --silent "https://api.github.com/repos/ksync/ksync/releases/latest" | jq -r '.tag_name')"
+  else
+    version="$(curl --silent "https://github.com/ksync/ksync/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')"
+  fi
+  echo "${version}"
+}
+
+downloadAndInstall () {
+  os=$1
+
+  mkdir -p ${downloaddir}
+
+  (cd ${downloaddir}
+    version=`currentVersion`
+    filename="ksync_${os}"
+    test -r ${filename} || curl -L -o ${filename} "https://github.com/ksync/ksync/releases/download/${version}/${filename}"
+    ${sudo} mv ${filename} /usr/local/bin/ksync
+    ${sudo} chmod 755 /usr/local/bin/ksync
+  )
+}
+
+
+case `uname -a` in
+  *Ubuntu* | *Debian* | *Linux* )
+    if test -x /usr/local/bin/ksync; then
+      echo "ksync is already installed - trying update"
+      ${sudo} ksync update
+    else
+      downloadAndInstall "linux_amd64"
+    fi
+    ;;
+  Darwin* )
+    if test -x /usr/local/bin/ksync; then
+      echo "ksync is already installed - trying upgrade"
+      ksync update
+    else
+      downloadAndInstall "darwin_amd64"
+    fi
+    ;;
+  * )
+    echo "Please install ksync manually, I cannot determine your OS!" >&2
+    exit 1
+esac
